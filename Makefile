@@ -1,6 +1,6 @@
 TOP_DIR=$(PWD)
 BIN_DIR=$(TOP_DIR)/bin
-SUB_DIR=count cowsay
+SUB_DIR=count cowsay 
 
 all:make_bin_dir
 	$(foreach N, $(SUB_DIR), make -C $(N);)
@@ -10,6 +10,9 @@ make_bin_dir:
 	then \
 		mkdir $(BIN_DIR) ; \
 	fi
+
+lolcat: 
+	$(make install -C ./lolcat DESTDIR=$(pwd)/bin)
 
 clean:
 	rm -rf $(BIN_DIR)
