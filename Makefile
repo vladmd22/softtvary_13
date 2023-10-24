@@ -2,7 +2,7 @@ TOP_DIR=$(PWD)
 BIN_DIR=$(TOP_DIR)/bin
 SUB_DIR=count cowsay 
 
-all:make_bin_dir
+all:make_bin_dir lolcat
 	$(foreach N, $(SUB_DIR), make -C $(N);)
 
 make_bin_dir:
