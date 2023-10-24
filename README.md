@@ -18,10 +18,6 @@ docker run -it project:v1
 
 ### build manualy
 ```shell
-make && bash prereqs.sh
-```
-or simply
-```shell
 bash install.sh
 ```
 to uninstal everything use:
