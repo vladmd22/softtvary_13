@@ -4,8 +4,6 @@ SUB_DIR=count cowsay lolcat
 
 all:make_bin_dir 
 	$(foreach N, $(SUB_DIR), make -C $(N);)
-	ln -s ./lolcat/lolcat $(BIN_DIR)/lolcat
-	ln -s ./lolcat/censor $(BIN_DIR)/censor
 
 make_bin_dir:
 	@if test ! -d $(BIN_DIR) ; \
