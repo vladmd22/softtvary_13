@@ -4,6 +4,3 @@
 [submodule "lolcat"]
 	path = lolcat
 	url = https://github.com/jaseg/lolcat.git
-[submodule "figlet"]
-	path = figlet
-	url = https://github.com/cmatsuoka/figlet.git
