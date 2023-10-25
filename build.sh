@@ -1,6 +1,6 @@
 bash prereqs.sh
 
-rm ./cowsay/Makefile && mv Makefile_cowsay ./cowsay/Makefile 
+rm ./cowsay/Makefile && cp Makefile_cowsay ./cowsay && mv ./cowsay/Makefile_cowsay ./cowsay/Makefie 
 
 make -f Makefile
 
