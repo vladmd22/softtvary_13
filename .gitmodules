@@ -1,0 +1,6 @@
+[submodule "cowsay"]
+	path = cowsay
+	url = https://github.com/cowsay-org/cowsay.git
+[submodule "lolcat"]
+	path = lolcat
+	url = https://github.com/jaseg/lolcat.git
