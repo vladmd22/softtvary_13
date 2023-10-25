@@ -11,8 +11,15 @@ count(){
 }
 
 cowsay(){
-    phrase=$1
-    clear && ./bin/cowsay -f ./bin/share/cowsay/cows/default.cow $phrase
+    cow=$1
+    phrase=$2
+    clear && ./cowsay/cowsay -f $cow $phrase
+}
+
+cowsay(){
+    cow=$1
+    phrase=$2
+    clear && ./cowsay/cowsay -f $cow $phrase
 }
 
 cowsay_() {
