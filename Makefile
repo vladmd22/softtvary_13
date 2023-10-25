@@ -14,5 +14,3 @@ make_bin_dir:
 clean:
 	rm -rf $(BIN_DIR)
 	$(foreach N, $(SUB_DIR), make -C $(N) clean;)
-	mv ./cowsay/Makefile ./Makefile_cowsay
-	rm -rf ./lolcat ./cowsay

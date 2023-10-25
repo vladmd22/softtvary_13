@@ -17,9 +17,17 @@ docker run -it project:v1
 ```
 
 ### build manualy
+run this commands:
 ```shell
+bash prereqs.sh
+bash build.sh
+```
+
+or simply...
+```
 bash install.sh
 ```
+
 to uninstal everything use:
 ```shell
 make clean
@@ -27,19 +35,20 @@ make clean
 ## Runing the program
 To run the interactive program:
 ```shell
-chmod +x run.sh && run.sh
+run.sh
 ```
 
 ## Testing the program
 To install testing framework:
 ```
-
+...
 ```
-
-To test:
+To run tests:
 ```shell
-./test_run.sh
+test.sh
 ```
+
+
 
 
 ### Team members:

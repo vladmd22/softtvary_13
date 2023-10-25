@@ -1,3 +1,4 @@
 apt-get install build-essential -y
 
-apt-get figlet
+apt update
+apt install figlet

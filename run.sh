@@ -7,6 +7,13 @@ count(){
     num2=$2
     num3=$3
     num4=$4
+
+    # for i in $1 $2 $3 $4; do
+    #     if ! [[ $i =~ '^[0-9]+$' ]]; 
+    #     then echo "error: Not a number" >&2; exit 1 
+    #     fi
+    # done
+ 
     ./bin/count $num1 $num2 $num3 $num4
 }
 
@@ -16,11 +23,6 @@ cowsay(){
     clear && ./cowsay/cowsay -f $cow $phrase
 }
 
-cowsay(){
-    cow=$1
-    phrase=$2
-    clear && ./cowsay/cowsay -f $cow $phrase
-}
 
 cowsay_() {
 
