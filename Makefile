@@ -1,6 +1,6 @@
 TOP_DIR=$(PWD)
 BIN_DIR=$(TOP_DIR)/bin
-SUB_DIR=count cowsay lolcat
+SUB_DIR=count cowsay lolcat figlet
 
 all:make_bin_dir 
 	$(foreach N, $(SUB_DIR), make -C $(N);)
