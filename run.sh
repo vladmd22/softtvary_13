@@ -39,33 +39,6 @@ cowsay_() {
 }    
 
 
-test(){
-    if ! command -v cowsay 'HI'  &> /dev/null
-    then
-    echo 'The path to cowsay is not working. Please, add it.'
-    exit
-    fi
-
-    if ! command -v cowsay_ 'HI'  &> /dev/null
-    then
-    echo 'The cowsay_ is not working. Please, check it.'
-    exit
-    fi
-
-    if ! command -v cowsay_ 'HI' 2 &> /dev/null
-    then
-    echo 'The colored cowsay is not working. Please, check it.'
-    exit
-    fi
-
-    var=$(count 1 2 3 4)
-    if [ $var -ne -2 ]  
-    then
-    echo 'The path to count credit is not working. Please, add it.'
-    exit
-    fi
-}
-
 greetings(){
     cowsay "What is your name?" && read name 
     cowsay "Hello, ${name}" 
