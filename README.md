@@ -1,11 +1,23 @@
 # FSE project
-This is a repo for Foundations of Software Engineering project
-made by Team 13
+This is a repo for Foundations of Software Engineering project made by Team 13
 
-
+![](https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png?v8)
 
 ## Project structure
-This repo help you to calc credits
+We used to additional git repositories added as git submodules - lolcat and cowsay
+Our project is heavily dependend on them.
+
+This repo help you to calclulate credits. You just need to say cow folowing numbers to a cow and she will calculate the payment :
++ M - credit count
++ N - number of payments"
++ i - % in fractions of a unit"
++ m - number of paid payments"
+
+And as well some interactions with the  cow. 
+
+Good Luck & Have Fun 
+
+![](https://github.githubassets.com/images/icons/emoji/unicode/1f404.png?v8)
 
 
 ## Installation
@@ -39,17 +51,11 @@ run.sh
 ```
 
 ## Testing the program
-To install testing framework:
-```
-...
 ```
 To run tests:
 ```shell
 test.sh
 ```
-
-
-
 
 ### Team members:
 + Alexandra Malygina
@@ -59,4 +65,4 @@ test.sh
 + Vladislav Mityukov
 
 
-IMPORTANT NOTE: supposed start from project directory within Docker container, otherwise add sudo command to scripts.
+**IMPORTANT NOTE:** supposed start from project directory within Docker container, otherwise add sudo command to scripts.

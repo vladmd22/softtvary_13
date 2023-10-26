@@ -5,7 +5,7 @@ COW=./cowsay/share/cows/default.cow
 
 credit(){
     if [[ -z $@ ]]; then 
-        echo "ERROR: no arguments"
+        echo "no_arguments"
     else
 
     M=$1
@@ -32,7 +32,7 @@ cowthink(){
 
 COWSAY() {
     if [[ -z $@ ]]; then 
-        echo "ERROR: no arguments"
+        echo "no_arguments"
     else
         if [ $3 == 2 ]; then 
             cowsay "${COW}" "${phrase}" | ./lolcat/lolcat; 
