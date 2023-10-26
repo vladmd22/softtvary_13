@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 COLOR=0
+COW=./cowsay/share/cows/default.cow
 
-count(){
-    num1=$1
-    num2=$2
-    num3=$3
-    num4=$4
+credit(){
+    if [[ -z $@ ]]; then 
+        echo "ERROR: no arguments"
+    else
 
-    # for i in $1 $2 $3 $4; do
-    #     if ! [[ $i =~ '^[0-9]+$' ]]; 
-    #     then echo "error: Not a number" >&2; exit 1 
-    #     fi
-    # done
- 
-    ./bin/count $num1 $num2 $num3 $num4
+    M=$1
+    N=$2
+    i=$3
+    m=$4
+
+    ./bin/credit $M $N $i $m  
+    fi
 }
 
 cowsay(){
@@ -23,78 +23,120 @@ cowsay(){
     clear && ./cowsay/cowsay -f $cow $phrase
 }
 
-
-cowsay_() {
-
-    if [[ -z $1 && -z $2 ]]; then 
-        echo "ERROR: no arguments"
-    else
-        if [ $2 == 2 ]; then 
-        cowsay "${phrase}" | ./bin/lolcat; 
-        else 
-        cowsay "${phrase}";
-        fi
-    fi
- 
-}    
-
-
-greetings(){
-    cowsay "What is your name?" && read name 
-    cowsay "Hello, ${name}" 
+cowthink(){
+    cow=$1
+    phrase=$2
+    clear && ./cowsay/cowthink -f $cow $phrase
 }
 
-color_me(){
-    cowsay 'Do you want to color me? [Y|y]' && read input
+
+COWSAY() {
+    if [[ -z $@ ]]; then 
+        echo "ERROR: no arguments"
+    else
+        if [ $3 == 2 ]; then 
+            cowsay "${COW}" "${phrase}" | ./bin/lolcat; 
+        else 
+            cowsay "${COW}" "${phrase}";
+        fi
+    fi
+
+}    
+
+greetings(){
+    phrase="What is your name?"
+    cowsay "${COW}" "${phrase}" && read name
+    if [[ $name == "" ]]; then
+        name="Mr. Nobody"
+        cowsay "${COW}" "Hello, ${name}" && sleep 2
+    elif [[ $name == *[0-9]* ]]; then 
+        name="Цифорка"
+        cowsay "${COW}" "Hello, ${name}" && sleep 2
+    else
+        cowsay "${COW}" "Hello, ${name}" && sleep 2 
+    fi
+}
+
+change_cow(){
+    cowsay "${COW}" "Do you like me? [Y|N]" && read input
+    if [[ $input == "Y" || $input == "y" ]]; then
+        phrase="Oooo TNX you are so adorable?"
+        COWSAY "${COW}" "${phrase}" "${COLOR}" && sleep 2
+    else
+        COW=./resources/cow.cow
+        phrase="Do you like me now?"
+        COWSAY "${COW}" "${phrase}" "${COLOR}" && sleep 2
+    fi
+}
+
+color_cow(){
+    cowsay 'Do you want to color me? [Y|N]' && read input
     if [[ $input == "Y" || $input == "y" ]]; then
             COLOR=2
-            phrase="Am I beautiful?"
-            cowsay_ "${phrase}" $COLOR
+            phrase="I am beautiful?"
+            COWSAY "${COW}" "${phrase}" $COLOR && sleep 2
     else
             phrase="'I am sad(('"
-            cowsay_ "${phrase}" $COLOR
+            COWSAY "${COW}" "${phrase}" $COLOR && sleep 2
     fi
 }
 
 main_loop(){
 
-    cowsay_all(){
-        cowsay_ "${phrase}" $COLOR
-    }
+    # M="credit count"
+    # N="number of payments"
+    # i="% in fractions of a unit"
+    # m="number of paid payments"
 
-    for num in {1..4}; do
-        phrase="${name}, please enter a number $num"
-        cowsay_all && read num${num}
-    done
-    phrase="That's yr result: $(count $num1 $num2 $num3 $num4)"
-    cowsay_all && sleep 5
+    phrase="${name}, please enter a credit count"
+    COWSAY "${COW}" "${phrase}" $COLOR && read M
+    phrase="${name}, please enter a number of payments"
+    COWSAY "${COW}" "${phrase}" $COLOR && read N
+    phrase="${name}, please enter a % in fractions of a unit"
+    COWSAY "${COW}" "${phrase}" $COLOR && read i
+    phrase="${name}, please enter a number of paid payments"
+    COWSAY "${COW}" "${phrase}" $COLOR && read m
+    
+    phrase="That's yr result: $(credit "${M}" "${N}" "${i}" "${m}")"
+    COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+
     phrase="Would u like to continue? [Y|N]"
-    cowsay_all && read input
+    COWSAY "${COW}" "${phrase}" $COLOR && read input
 
     if [[ $input == "Y" || $input == "y" ]]; then
-        for num in {1..4}; do
-            phrase="${name}, please enter a number $num"
-            cowsay_ all && read num${num}
-        done
-        phrase="That's yr result: $(count $num1 $num2 $num3 $num4)"
-        cowsay_all && sleep 5
+        phrase="${name}, please enter a credit count"
+        COWSAY "${COW}" "${phrase}" $COLOR && read M
+        phrase="${name}, please enter a number of payments"
+        COWSAY "${COW}" "${phrase}" $COLOR && read N
+        phrase="${name}, please enter a % in fractions of a unit"
+        COWSAY "${COW}" "${phrase}" $COLOR && read i
+        phrase="${name}, please enter a number of paid payments"
+        COWSAY "${COW}" "${phrase}" $COLOR && read m
+        
+        phrase="That's yr result: $(credit "${M}" "${N}" "${i}" "${m}")"
+        COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+
         phrase="Would u like to continue? [Y|N]"
-        cowsay_all && read input
+        COWSAY "${COW}" "${phrase}" $COLOR && read input
     else
         phrase="Adios, ${name}"
-        cowsay_all && sleep 5
+        COWSAY "${COW}" "${phrase}" $COLOR && sleep 1
+        figlet Tnx for YR attention && sleep 2
     fi
 }
 
-
 main(){
     clear
-	unset name input
-    test
-    greetings
-    color_me
-    main_loop
-    clear
+	unset name input phranse
+    figlet "Welcome" && sleep 2
+    greetings && change_cow
+    if [[ $COW == './cowsay/share/cows/default.cow' ]]; then 
+        color_cow && main_loop && clear
+    elif [[ $COW == './resources/cow.cow' ]]; then
+        main_loop && clear
+    else
+        echo "ERROR: wrong cow_path"
+    fi
 }
 
 main
