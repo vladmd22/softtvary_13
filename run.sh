@@ -35,7 +35,7 @@ COWSAY() {
         echo "ERROR: no arguments"
     else
         if [ $3 == 2 ]; then 
-            cowsay "${COW}" "${phrase}" | ./bin/lolcat; 
+            cowsay "${COW}" "${phrase}" | ./lolcat/lolcat; 
         else 
             cowsay "${COW}" "${phrase}";
         fi
@@ -70,7 +70,7 @@ change_cow(){
 }
 
 color_cow(){
-    cowsay 'Do you want to color me? [Y|N]' && read input
+    cowsay "${COW}" 'Do you want to color me? [Y|N]' && read input
     if [[ $input == "Y" || $input == "y" ]]; then
             COLOR=2
             phrase="I am beautiful?"
@@ -97,8 +97,14 @@ main_loop(){
     phrase="${name}, please enter a number of paid payments"
     COWSAY "${COW}" "${phrase}" $COLOR && read m
     
-    phrase="That's yr result: $(credit "${M}" "${N}" "${i}" "${m}")"
-    COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+    result=$(credit "${M}" "${N}" "${i}" "${m}")
+    if [[ $result == *"credit {M} {N} {i} {m}"* ]]; then
+        phrase="U missed everything(("
+        COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+    else
+        phrase="That's YR result: ${result} ))))"
+        COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+    fi
 
     phrase="Would u like to continue? [Y|N]"
     COWSAY "${COW}" "${phrase}" $COLOR && read input
@@ -112,12 +118,16 @@ main_loop(){
         COWSAY "${COW}" "${phrase}" $COLOR && read i
         phrase="${name}, please enter a number of paid payments"
         COWSAY "${COW}" "${phrase}" $COLOR && read m
-        
-        phrase="That's yr result: $(credit "${M}" "${N}" "${i}" "${m}")"
-        COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
-
-        phrase="Would u like to continue? [Y|N]"
-        COWSAY "${COW}" "${phrase}" $COLOR && read input
+        result=$(credit "${M}" "${N}" "${i}" "${m}")
+        if [[ $result == *"credit {M} {N} {i} {m}"* ]]; then
+            phrase="U missed everything (( "
+            COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+        else
+            phrase="That's YR result: ${result} ))))"
+            COWSAY "${COW}" "${phrase}" $COLOR && sleep 5
+        fi
+    phrase="Would u like to continue? [Y|N]"
+    COWSAY "${COW}" "${phrase}" $COLOR && read input
     else
         phrase="Adios, ${name}"
         COWSAY "${COW}" "${phrase}" $COLOR && sleep 1
@@ -127,9 +137,10 @@ main_loop(){
 
 main(){
     clear
-	unset name input phranse
+	unset name input phrase
     figlet "Welcome" && sleep 2
     greetings && change_cow
+    unset input phrase
     if [[ $COW == './cowsay/share/cows/default.cow' ]]; then 
         color_cow && main_loop && clear
     elif [[ $COW == './resources/cow.cow' ]]; then

@@ -38,5 +38,8 @@ test_paths(){
 }
 test_paths 
 
+# run bats test
+./tests/test_run_bats.sh
+
 # run tests for credit function
 ./bin/tests
