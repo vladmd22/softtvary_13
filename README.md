@@ -29,6 +29,11 @@ docker run -it project:v1
 ```
 
 ### build manualy
+first of all clone git repo with all submodules
+```shell
+git clone --recursive https://github.com/vladmd22/softtvary_13.git
+```
+
 run this commands:
 ```shell
 bash prereqs.sh
@@ -36,7 +41,7 @@ bash build.sh
 ```
 
 or simply...
-```
+```shell
 bash install.sh
 ```
 
@@ -44,6 +49,7 @@ to uninstal everything use:
 ```shell
 make clean
 ```
+
 ## Runing the program
 To run the interactive program:
 ```shell
@@ -51,7 +57,6 @@ run.sh
 ```
 
 ## Testing the program
-```
 To run tests:
 ```shell
 test.sh
