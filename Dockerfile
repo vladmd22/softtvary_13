@@ -6,7 +6,9 @@ RUN git clone --recursive https://github.com/vladmd22/softtvary_13.git
 
 WORKDIR /softtvary_13
 
-FROM base as build
-RUN chmod +x install.sh
-RUN chmod +x run.sh
-RUN ./install.sh
+FROM base as install
+RUN ./prereqs.sh
+
+FROM install as build
+RUN ./build.sh
+
