@@ -1,7 +1,7 @@
-# FSE project
+# FSE project :cow:
 This is a repo for Foundations of Software Engineering project made by Team 13
 
-![](https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png?v8)
+<!-- ![](https://github.githubassets.com/images/icons/emoji/unicode/1f42e.png?v8) -->
 
 ## Project structure
 We used to additional git repositories added as git submodules - lolcat and cowsay
@@ -24,8 +24,8 @@ Good Luck & Have Fun
 
 ### build the image from dockerfile and run the container
 ```shell
-docker build -t project:v1  -f Dockerfile .
-docker run -it project:v1
+docker build -t project:v1.2  -f Dockerfile .
+docker run -it project:v1.2
 ```
 
 ### build manualy
