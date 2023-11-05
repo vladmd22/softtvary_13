@@ -69,5 +69,5 @@ test.sh
 + Nataliya Pavlova
 + Vladislav Mityukov
 
-
-**IMPORTANT NOTE:** supposed start from project directory within Docker container, otherwise add sudo command to scripts.
+> [!IMPORTANT]
+> supposed start from project directory within Docker container, otherwise add sudo command to scripts.
